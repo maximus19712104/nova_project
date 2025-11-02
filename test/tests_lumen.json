@@ -1,0 +1,35 @@
+{
+  "test_cases": [
+    {
+      "id": "test_1",
+      "query": "Как сократить расходы на воду?",
+      "context": {"budget": "low", "location": "rural"},
+      "expected_strategy": "harmony"
+    },
+    {
+      "id": "test_2", 
+      "query": "Инновационные способы экономии энергии",
+      "context": {"budget": "medium", "innovation": "high"},
+      "expected_strategy": "creative"
+    },
+    {
+      "id": "test_3",
+      "query": "Стандартные методы улучшения продуктивности",
+      "context": {"risk": "low", "experimentation": "low"},
+      "expected_strategy": "conservative"
+    }
+  ],
+  "nova_patterns": [
+    {
+      "key": "water_saving",
+      "type": "rule",
+      "logic": "Установка счетчиков → Контроль потребления → Снижение расходов"
+    }
+  ],
+  "orvyn_analogies": [
+    {
+      "snippet_text": "Как в энергосбережении: smart meters помогают отслеживать и сокращать потребление",
+      "tags": ["energy", "monitoring", "efficiency"]
+    }
+  ]
+}

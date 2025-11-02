@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nova System Dashboard</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .card { border: 1px solid #ddd; padding: 20px; margin: 10px 0; border-radius: 8px; }
+        .insight { background: #f0f8ff; }
+        .feedback { background: #f0fff0; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        .rating-buttons { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Nova System Human Evaluation Dashboard</h1>
+    
+    <div class="card">
+        <h2>System Overview</h2>
+        <div id="stats">Loading statistics...</div>
+    </div>
+    
+    <div class="card">
+        <h2>Quick Actions</h2>
+        <button onclick="location.href='/evaluation'">Evaluate Insights</button>
+        <button onclick="refreshStats()">Refresh Stats</button>
+    </div>
+    
+    <script>
+        async function refreshStats() {
+            const response = await fetch('/stats');
+            const stats = await response.json();
+            document.getElementById('stats').innerHTML = `
+                <p>Total Requests: ${stats.total_requests || 0}</p>
+                <p>Total Decisions: ${stats.total_decisions || 0}</p>
+                <p>Total Feedback: ${stats.total_feedback || 0}</p>
+                <p>Status: ${stats.system_health || 'unknown'}</p>
+            `;
+        }
+        
+        // Load stats on page load
+        refreshStats();
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluate Insights - Nova System</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .insight-card { 
+            border: 1px solid #ccc; 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .confidence { 
+            display: inline-block; 
+            padding: 2px 8px; 
+            border-radius: 4px; 
+            background: #e0e0e0;
+            margin-left: 10px;
+        }
+        .high-conf { background: #4caf50; color: white; }
+        .medium-conf { background: #ff9800; color: white; }
+        .low-conf { background: #f44336; color: white; }
+        .rating-buttons { margin: 15px 0; }
+        button { 
+            padding: 8px 15px; 
+            margin: 0 5px; 
+            cursor: pointer; 
+            border: none;
+            border-radius: 4px;
+        }
+        .rating-1 { background: #ffcdd2; }
+        .rating-2 { background: #ffccbc; }
+        .rating-3 { background: #fff9c4; }
+        .rating-4 { background: #c8e6c9; }
+        .rating-5 { background: #4caf50; color: white; }
+        textarea { width: 100%; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Insight Evaluation</h1>
+    <p>Rate the quality of generated insights:</p>
+    
+    {% for insight in insights %}
+    <div class="insight-card">
+        <h3>Insight #{{ loop.index }}</h3>
+        <p><strong>Request ID:</strong> {{ insight.request_id }}</p>
+        <p><strong>Insight:</strong> {{ insight.insight }}</p>
+        <p><strong>Strategy:</strong> {{ insight.strategy }} 
+            <span class="confidence {% if insight.confidence > 0.7 %}high-conf{% elif insight.confidence > 0.4 %}medium-conf{% else %}low-conf{% endif %}">
+                Confidence: {{ "%.2f"|format(insight.confidence) }}
+            </span>
+        </p>
+        
+        <details>
+            <summary>Rationale (Click to expand)</summary>
+            <ul>
+                {% for item in insight.rationale %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </details>
+        
+        <form action="/submit_feedback" method="post" onsubmit="return submitFeedback(this)">
+            <input type="hidden" name="request_id" value="{{ insight.request_id }}">
