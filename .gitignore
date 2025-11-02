@@ -1,3 +1,6 @@
 nova_env/
 __pycache__/
 *.pyc
+*.log
+.DS_Store
+.env
