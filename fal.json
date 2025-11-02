@@ -1,0 +1,15 @@
+{
+  "name": "Nova Project",
+  "runtime": "python:3.10",
+  "entrypoint": "python run.py",
+  "requirements": "requirements.txt",
+  "resources": {
+    "cpu": 2,
+    "memory": "4Gi",
+    "gpu": false
+  },
+  "env": {
+    "ENVIRONMENT": "production"
+  }
+}
+
