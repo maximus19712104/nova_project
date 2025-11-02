@@ -1,0 +1,15 @@
+# .gitignore
+nova_env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.log
+*.swp
+*.bak
+*.tmp
+*.cache
+.DS_Store
+.ipynb_checkpoints
+
