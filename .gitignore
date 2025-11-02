@@ -1,6 +1,83 @@
-nova_env/
+# -----------------------
+# Python
+# -----------------------
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
 *.pyc
+*.pym
+*.pycache/
+
+# -----------------------
+# Virtual environments
+# -----------------------
+nova_env/
+env/
+venv/
+ENV/
+.venv/
+*.env
+
+# -----------------------
+# Logs and databases
+# -----------------------
 *.log
+*.sqlite3
+*.db
+*.db-journal
+
+# -----------------------
+# Jupyter / IPython
+# -----------------------
+.ipynb_checkpoints/
+*.ipynb
+
+# -----------------------
+# Hugging Face & ML
+# -----------------------
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.h5
+*.npz
+*.tar.gz
+*.zip
+
+# -----------------------
+# Temporary / OS
+# -----------------------
 .DS_Store
-.env
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+*.temp
+
+# -----------------------
+# IDEs
+# -----------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# -----------------------
+# Build / Dist
+# -----------------------
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# -----------------------
+# Templates / static (optional)
+# -----------------------
+*.html~
+*.css~
+*.js~
+*.map
+
